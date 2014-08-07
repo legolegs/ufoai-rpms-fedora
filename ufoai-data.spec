@@ -2,7 +2,7 @@
 
 Name:		ufoai-data
 Version:	2.5
-Release:	0.1.2013117git
+Release:	1
 Summary:	UFO: Alien Invasion data files
 
 Group:		Amusements/Games
@@ -73,6 +73,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Thu Aug  7 2014 Sun Oleg Osipov <legolegs@yandex.ru> - 2.5-1
+- Update to 2.5 release
+
 * Sun Nov 24 2013 Marcin Zajaczkowski <mszpak ATT wp DOTT pl> - 2.5-0.1.2013117git
 - Update to 2.5-dev
 - Remove introductory video (removed also upstream)

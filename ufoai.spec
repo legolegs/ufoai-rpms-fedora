@@ -1,9 +1,8 @@
-#TODO: remove in 2.5 final
-%define		devModifier	-dev
+%define		devModifier	%{nil}
 
 Name:		ufoai
 Version:	2.5
-Release:	0.1.2013117git%{?dist}
+Release:	1%{?dist}
 Summary:	UFO: Alien Invasion
 
 Group:		Amusements/Games
@@ -16,23 +15,19 @@ Patch0:		ufoai-2.5-desktop-files.patch
 
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildRequires:	desktop-file-utils curl-devel freealut-devel gettext
+BuildRequires:	desktop-file-utils curl-devel gettext
 BuildRequires:	zip python
 BuildRequires:	libjpeg-devel libogg-devel libpng-devel
-BuildRequires:	xvidcore-devel
 BuildRequires:	libtheora-devel
 BuildRequires:	libvorbis-devel
 BuildRequires:	libXxf86dga-devel libXxf86vm-devel
 BuildRequires:	glibc-headers binutils-devel zlib-devel
 BuildRequires:	lua-devel
 BuildRequires:	SDL-devel
-BuildRequires:	SDL_image-devel
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	SDL_ttf-devel
 # in RPMFusion-free; substituted with libtheora-devel
-#BuildRequires:	xvidcore-devel
-# uforadiant:
-#BuildRequires:	gtk2-devel gtksourceview-devel libxml2-devel openal-soft-devel gtkglext-devel
+#BuildRequires:	xvidcore-devel # doesnt seems to substitute but whatever --Osipov
 # IFO:AI has own copy of
 #BuildRequires: mxml-devel
 
@@ -68,8 +63,9 @@ Group:		Development/Tools
 %package uforadiant
 Summary:	UFO: Alien Invasion map editor
 Group:		Development/Tools
-BuildRequires:	gtkglext-devel
-BuildRequires:	gtksourceview2-devel
+BuildRequires:	gtkglext-devel gtksourceview2-devel gtk2-devel
+BuildRequires:	openal-soft-devel
+#BuildRequires:	libxml2-devel 
 Requires:	%{name}-tools
 
 
@@ -132,7 +128,7 @@ sed -i -e "/maps.mk/d" Makefile
 sed -i -e "/models.mk/d" Makefile
 # we don't use any of the installers
 #sed -i -e "/install.mk/d" Makefile
-#TODO: Disable also "mojo install"
+sed -i -e "/install_mojo.mk/d" build/install.mk
 #TODO: Add license file also in other packages - always GPLv2+?
 
 %build
@@ -144,6 +140,7 @@ sed -i -e "/models.mk/d" Makefile
 	--datadir=%{_datadir}/%{name} \
 	--libdir=%{_libdir}/%{name} \
 	--localedir=%{_datarootdir}/locale \
+	--disable-testall \
 	--enable-ufoded \
 	--enable-uforadiant \
 	--enable-ufo2map \
@@ -322,6 +319,12 @@ fi
 
 
 %changelog
+* Thu Aug  7 2014 Sun Oleg Osipov <legolegs@yandex.ru> - 2.5-1
+- Update to 2.5 release
+- Disabled mojo and some other non-needed build procedures
+- Removed BuildRequires: freealut-devel
+- Added uforadiant's BuildRequires: gtk2-devel openal-soft-devel
+
 * Sun Nov 24 2013 Marcin Zajaczkowski <mszpak ATT wp DOTT pl> - 2.5-0.1.2013117git
 - Update to 2.5-dev (doc package temporarily disabled)
 

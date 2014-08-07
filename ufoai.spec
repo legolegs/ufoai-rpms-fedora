@@ -17,10 +17,13 @@ Patch0:		ufoai-2.5-desktop-files.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:	desktop-file-utils curl-devel freealut-devel gettext
+BuildRequires:	zip python
 BuildRequires:	libjpeg-devel libogg-devel libpng-devel
+BuildRequires:	xvidcore-devel
 BuildRequires:	libtheora-devel
 BuildRequires:	libvorbis-devel
 BuildRequires:	libXxf86dga-devel libXxf86vm-devel
+BuildRequires:	glibc-headers binutils-devel zlib-devel
 BuildRequires:	lua-devel
 BuildRequires:	SDL-devel
 BuildRequires:	SDL_image-devel
@@ -28,6 +31,10 @@ BuildRequires:	SDL_mixer-devel
 BuildRequires:	SDL_ttf-devel
 # in RPMFusion-free; substituted with libtheora-devel
 #BuildRequires:	xvidcore-devel
+# uforadiant:
+#BuildRequires:	gtk2-devel gtksourceview-devel libxml2-devel openal-soft-devel gtkglext-devel
+# IFO:AI has own copy of
+#BuildRequires: mxml-devel
 
 Requires:	opengl-games-utils
 Requires:	%{name}-common = %{version}

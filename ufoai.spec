@@ -122,13 +122,14 @@ This package contains the UFORadiant map editor.
 
 %prep
 %setup -q -n %{name}-%{version}%{devModifier}-source
-# ufoai-2.5-desktop-files.patch - fix executable and icon names
+# ufoai-2.5-desktop-files.patch - fix executable and icon names to 
+# conform Fedora guidelines
 %patch0 -p1
 sed -i -e "/maps.mk/d" Makefile
 sed -i -e "/models.mk/d" Makefile
 # we don't use any of the installers
-#sed -i -e "/install.mk/d" Makefile
-sed -i -e "/install_mojo.mk/d" build/install.mk
+sed -i -e "/install.mk/d" Makefile
+#sed -i -e "/install_mojo.mk/d" build/install.mk
 #TODO: Add license file also in other packages - always GPLv2+?
 
 %build
@@ -319,7 +320,7 @@ fi
 
 
 %changelog
-* Thu Aug  7 2014 Sun Oleg Osipov <legolegs@yandex.ru> - 2.5-1
+* Thu Aug  7 2014 Oleg Osipov <legolegs@yandex.ru> - 2.5-1
 - Update to 2.5 release
 - Disabled mojo and some other non-needed build procedures
 - Removed BuildRequires: freealut-devel

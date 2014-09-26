@@ -2,13 +2,14 @@
 
 Name:		ufoai-data
 Version:	2.5
-Release:	1
+Release:	2
 Summary:	UFO: Alien Invasion data files
 
 Group:		Amusements/Games
 License:	GPLv2+
 URL:		http://ufoai.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/%{game_name}/%{game_name}-%{version}-data.tar
+Source1:	%{game_name}-%{version}-data-fix.tar
 
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:	noarch
@@ -33,7 +34,7 @@ This package contains the data files needed to run the game server.
 
 
 %prep
-%setup -c -q
+%setup -c -q -a1
 
 
 %build
@@ -69,11 +70,15 @@ rm -rf %{buildroot}
 %dir %{_datadir}/%{game_name}/base
 %{_datadir}/%{game_name}/base/0base.pk3
 %{_datadir}/%{game_name}/base/0maps.pk3
+%{_datadir}/%{game_name}/base/1maps.pk3
 %{_datadir}/%{game_name}/base/0ufos.pk3
 
 
 %changelog
-* Thu Aug  7 2014 Sun Oleg Osipov <legolegs@yandex.ru> - 2.5-1
+* Fri Sep 26 2014 Oleg Osipov <legolegs@yandex.ru> - 2.5-2
+- Added back missing maps
+
+* Thu Aug  7 2014 Oleg Osipov <legolegs@yandex.ru> - 2.5-1
 - Update to 2.5 release
 
 * Sun Nov 24 2013 Marcin Zajaczkowski <mszpak ATT wp DOTT pl> - 2.5-0.1.2013117git

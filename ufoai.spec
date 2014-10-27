@@ -215,10 +215,6 @@ cp -pr radiant/i18n/* %{buildroot}%{_datadir}/locale/
 install -D -m 0644 debian/uforadiant.xpm %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/uforadiant.xpm
 desktop-file-install --dir=%{buildroot}%{_datadir}/applications debian/uforadiant.desktop
 
-%clean
-rm -rf %{buildroot}
-
-
 %post
 touch --no-create %{_datadir}/icons/hicolor
 if [ -x %{_bindir}/gtk-update-icon-cache ]; then
@@ -262,7 +258,6 @@ fi
 
 
 %files -f %{name}.lang
-%defattr(-,root,root,-)
 # we need to use full path so %%doc does not the cleanup
 %dir %{_docdir}/%{name}-%{version}
 %doc %{_docdir}/%{name}-%{version}/README
@@ -275,11 +270,7 @@ fi
 
 
 %files common
-%defattr(-,root,root,-)
 %{_libdir}/%{name}/
-%dir %{_datadir}/icons/hicolor/
-%dir %{_datadir}/icons/hicolor/32x32/
-%dir %{_datadir}/icons/hicolor/32x32/apps/
 
 
 # Temporarily disabled - tetex-latex needs hundreds of sub packages
@@ -290,7 +281,6 @@ fi
 
 
 %files server
-%defattr(-,root,root,-)
 %{_bindir}/ufoded
 %{_datadir}/applications/ufoded.desktop
 %{_datadir}/icons/hicolor/32x32/apps/ufoded.xpm
@@ -298,7 +288,6 @@ fi
 
 
 %files tools
-%defattr(-,root,root,-)
 %{_bindir}/ufo2map
 %{_bindir}/ufomodel
 %{_bindir}/ufoslicer
@@ -310,7 +299,6 @@ fi
 
 
 %files uforadiant -f uforadiant.lang
-%defattr(-,root,root,-)
 %{_bindir}/uforadiant
 %{_bindir}/uforadiant-wrapper.sh
 %{_datadir}/applications/uforadiant.desktop
@@ -320,6 +308,10 @@ fi
 
 
 %changelog
+* Mon Oct 27 2014 Oleg Osipov <legolegs@yandex.ru> - 2.5-2
+- Moving towards official Fedora
+- .spec file cleanup
+
 * Thu Aug  7 2014 Oleg Osipov <legolegs@yandex.ru> - 2.5-1
 - Update to 2.5 release
 - Disabled mojo and some other non-needed build procedures

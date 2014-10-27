@@ -9,8 +9,8 @@ Group:		Amusements/Games
 License:	GPLv2+
 URL:		http://ufoai.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}%{devModifier}-source.tar.bz2
-Source1:	%{name}-wrapper.sh
-Source2:	uforadiant-wrapper.sh
+# Source1:	%{name}-wrapper.sh
+# Source2:	uforadiant-wrapper.sh
 Patch0:		ufoai-2.5-desktop-files.patch
 
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -31,7 +31,7 @@ BuildRequires:	SDL_ttf-devel
 # IFO:AI has own copy of
 #BuildRequires: mxml-devel
 
-Requires:	opengl-games-utils
+# Requires:	opengl-games-utils
 Requires:	%{name}-common = %{version}
 Requires:	%{name}-data = %{version}
 Requires:	%{name}-data-server = %{version}
@@ -167,7 +167,7 @@ rm -rf %{buildroot}
 
 ### client
 install -D -m 0755 ufo %{buildroot}%{_bindir}/ufo
-install -p -m 0755 %{SOURCE1} %{buildroot}%{_bindir}
+# install -p -m 0755 %{SOURCE1} %{buildroot}%{_bindir}
 install -D -m 0644 debian/ufo.6 %{buildroot}%{_mandir}/man6/ufo.6
 mkdir -p -m 0755 %{buildroot}%{_datadir}/locale
 cp -pr base/i18n/* %{buildroot}%{_datadir}/locale/
@@ -202,7 +202,7 @@ install -D src/tools/blender/md2tag_export.py %{buildroot}%{_datadir}/%{name}/to
 
 ### install uforadiant
 install -D -m 0755 radiant/uforadiant %{buildroot}%{_bindir}/uforadiant
-install -p -m 0755 %{SOURCE2} %{buildroot}%{_bindir}
+# install -p -m 0755 %{SOURCE2} %{buildroot}%{_bindir}
 install -D -m 0644 debian/uforadiant.6 %{buildroot}%{_mandir}/man6/uforadiant.6
 mkdir -p -m 0755 %{buildroot}%{_datadir}/%{name}/radiant
 cp -p radiant/*.xml %{buildroot}%{_datadir}/%{name}/radiant/
@@ -263,7 +263,7 @@ fi
 %doc %{_docdir}/%{name}-%{version}/README
 %doc %{_docdir}/%{name}-%{version}/COPYING
 %{_bindir}/ufo
-%{_bindir}/ufoai-wrapper.sh
+# %{_bindir}/ufoai-wrapper.sh
 %{_datadir}/applications/ufoai.desktop
 %{_datadir}/icons/hicolor/32x32/apps/ufoai.xpm
 %doc %{_mandir}/man6/ufo.6*
@@ -300,7 +300,7 @@ fi
 
 %files uforadiant -f uforadiant.lang
 %{_bindir}/uforadiant
-%{_bindir}/uforadiant-wrapper.sh
+# %{_bindir}/uforadiant-wrapper.sh
 %{_datadir}/applications/uforadiant.desktop
 %{_datadir}/icons/hicolor/32x32/apps/uforadiant.xpm
 %{_datadir}/%{name}/radiant/
@@ -311,6 +311,7 @@ fi
 * Mon Oct 27 2014 Oleg Osipov <legolegs@yandex.ru> - 2.5-2
 - Moving towards official Fedora
 - .spec file cleanup
+- Removed wrappers from package
 
 * Thu Aug  7 2014 Oleg Osipov <legolegs@yandex.ru> - 2.5-1
 - Update to 2.5 release

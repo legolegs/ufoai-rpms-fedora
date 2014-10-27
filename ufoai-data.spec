@@ -7,7 +7,7 @@ Summary:	UFO: Alien Invasion data files
 
 Group:		Amusements/Games
 License:	GPLv2+
-URL:		http://ufoai.sourceforge.net/
+URL:		http://ufoai.org/
 Source0:	http://downloads.sourceforge.net/%{game_name}/%{game_name}-%{version}-data.tar
 Source1:	%{game_name}-%{version}-data-fix.tar
 

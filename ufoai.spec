@@ -7,7 +7,7 @@ Summary:	UFO: Alien Invasion
 
 Group:		Amusements/Games
 License:	GPLv2+
-URL:		http://ufoai.sourceforge.net/
+URL:		http://ufoai.org/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}%{devModifier}-source.tar.bz2
 # Source1:	%{name}-wrapper.sh
 # Source2:	uforadiant-wrapper.sh

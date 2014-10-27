@@ -6,7 +6,7 @@ Release:	1%{?dist}
 Summary:	UFO: Alien Invasion
 
 Group:		Amusements/Games
-License:	GPLv2+
+License:	CC-BY and CC-BY-SA and GFDL and GPLv2 and GPLv2+ and GPLv3+ and MIT and Public Domain
 URL:		http://ufoai.org/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}%{devModifier}-source.tar.bz2
 # Source1:	%{name}-wrapper.sh
